@@ -1,7 +1,8 @@
 %div{ "ng-controller" => "ScreencastsCtrl" }
   #screencast-list-container
+    %input.search-filter{ type: "text", "ng-model" => "searchFilter" }
     %ul
-      %li{ "ng-repeat" => "screencast in screencasts", "ng-click" => "showScreencast(screencast, $index)" }
+      %li{ "ng-repeat" => "screencast in screencasts | filter: searchFilter", "ng-click" => "showScreencast(screencast, $index)" }
         %h3{ "ng-Class" => "{active: $index == selectedRow}" }
           {{screencast.title}}
           %small ({{screencast.duration}})
